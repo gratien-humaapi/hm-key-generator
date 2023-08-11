@@ -15,7 +15,7 @@ function shuffleArray(array: string[]) {
   }
 }
 
-export default function generatePassword (length = 12) {
+export default function generatePassword (length:number) {
   const a = Math.random().toString(36);
   const b = a.substring(2, a.length);
   //   console.log(b);

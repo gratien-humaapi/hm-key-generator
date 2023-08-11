@@ -17,15 +17,15 @@ function PageShell({
 }) {
   return (
     <React.StrictMode>
+      <PageContextProvider pageContext={pageContext}>
       <MantineProvider
         withGlobalStyles
         withNormalizeCSS
         theme={{ colors: { primary: ["#ea6f66"] } }}
       >
-        <PageContextProvider pageContext={pageContext}>
           <Layout>{children}</Layout>
-        </PageContextProvider>
       </MantineProvider>
+        </PageContextProvider>
     </React.StrictMode>
   );
 }
@@ -34,8 +34,9 @@ function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div
       style={{
-        margin: "auto",
+        // margin: "auto",
         backgroundColor: '#F7F7F7',
+        // height: "100vh"
       }}
     >
       {children}
