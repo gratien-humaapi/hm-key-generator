@@ -9,7 +9,7 @@ import {
   Flex,
 } from "@mantine/core";
 import "./index.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import generatePassword from "../../utils/password-gen";
 import { useClipboard } from "@mantine/hooks";
 
@@ -17,26 +17,17 @@ export { Page };
 
 function Page() {
   const [password, setPassword] = useState("");
-  const [passwordLength, setPasswordLength] = useState(8);
+  const [passwordLength, setPasswordLength] = useState(12);
   const clipboard = useClipboard({ timeout: 500 });
 
+  useEffect(() => {
+    generatePass();
+  }, []);
   function generatePass() {
     const pass = generatePassword(passwordLength);
     setPassword(pass);
   }
-  function copyText() {
-    // const pass = generatePassword(passwordLength);
-    // setPassword(pass);
-    const text = "Example text to appear on clipboard";
-    navigator.clipboard.writeText(text).then(
-      function () {
-        console.log("Async: Copying to clipboard was successful!");
-      },
-      function (err) {
-        console.error("Async: Could not copy text: ", err);
-      }
-    );
-  }
+
   return (
     <>
       <div className="main">
